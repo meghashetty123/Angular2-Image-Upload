@@ -1,0 +1,9 @@
+import {ConceptsEntity} from '../models/conceptsEntity';
+import { ColorsEntity } from './colorsentity';
+export class DataPattern  {
+    
+   public  concepts?: (ConceptsEntity)[] | null;
+
+   constructor(){}
+       
+  }
