@@ -9,16 +9,16 @@ import { OnInit } from '@angular/core/src/metadata/lifecycle_hooks';
   styleUrls: ['./app.component.css']
 })
 export class AppComponent implements OnInit{
-  title = 'app works';
-  users;
+  title = 'Style Finder';
 
-  constructor(private userService: UserService){
+
+  constructor(){
   
   }
   ngOnInit()
   {
     //this.userService.getUsers().subscribe(p=>this.users = p);
-    console.log("Service Response",this.userService.getUsers().subscribe(p=>this.users = p));
+    //console.log("Service Response",this.userService.getUsers().subscribe(p=>this.users = p));
   }
  
  

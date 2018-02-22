@@ -1,10 +1,17 @@
 div.relative {
     position: relative;
-    right: -120px;
+    right: -200px;
     top: -90px;
+   
+}
+div.relative1 {
+    position: relative;
+    right: -450px;
+    top: -460px;
    
 }
 div.gallery img {
     width: 25%;
     height: auto;
 }
+
