@@ -1,40 +1,77 @@
+
+
 <p>
-  <!--
+ <!--
   style-finder works!
-  -->
+ -->
 </p>
 <!--
 <img src="../../assets/beach.jpg">
 -->
 
-
-<div>
+<div class="form-section" id="form-section">
+    <div class="container_12">
+   <div class="form">
   <form (ngSubmit)="getPintrestImages()" #PintrestForm="ngForm">
 
-    <input type="radio" [(ngModel)]="pinboard.category" name="category" value="gradle">Living Room <br>
-    <input type="radio" [(ngModel)]="pinboard.category" name="category" value="maven">Bed Room
-
-      <div class="url-check" id="url-check"></div>
-      <label><span id="label-no"></span> PASTE A PINTEREST LINK
-          <p>Tip: You can enter any public Pinterest board, regardless if it's yours.</p>
-      </label>
-      <div class="label-url">
-          URL
-      </div>
-     
-                   
-    <input  type="text"  required minlength="4" size="70"  [(ngModel)]="pinboard.boardurl"  placeholder="https://www.pinterest.com/username/board" name="boardurl"  #boardurl="ngModel">
+      <div class="board-input grid_7">
+          <div class="url-check" id="url-check"></div>
+          <label><span id="label-no">1</span> PASTE A PINTEREST LINK
+              <p>Tip: You can enter any public Pinterest board, regardless if it's yours.</p>
+          </label>
+          <div class="label-url">
+              URL
+          </div>
+      
+             
+    <input  type="text"  required minlength="4"   [(ngModel)]="pinboard.boardurl"  placeholder="https://www.pinterest.com/username/board" name="boardurl"  #boardurl="ngModel">
     <div [hidden]="boardurl.valid || boardurl.pristine" class="alert alert-danger">
         UUID IS required
       </div>
-    <br>
+   
+  </div>
+
+    <div class="room-input grid_4">
+        <label><span id="label-no">2</span> SELECT A CATEGORY</label>
+        <ul class="room-options" id="roomOptions">
+            <li>
+                <div id="roomTypeCheck"></div>
+                <input type="radio"  [(ngModel)]="pinboard.category" name="category" value="living"  id="living" checked>
+                <label for="living">Living Room</label>
+            </li>
+            <li>
+                <div id="roomTypeCheck"></div>
+                <input type="radio" [(ngModel)]="pinboard.category" name="category" value="bedroom" id="bedroom">
+                <label for="bedroom">Bedroom</label>
+            </li>
+            <li>
+                <div id="roomTypeCheck"></div>
+                <input type="radio"  [(ngModel)]="pinboard.category" name="category" value="dining-kitchen-furniture" id="dining-kitchen-furniture">
+                <label for="dining-kitchen-furniture">Dining Room + Kitchen</label>
+            </li>
+            <li>
+                <div id="roomTypeCheck"></div>
+                <input type="radio"  [(ngModel)]="pinboard.category" name="category"value="office" id="office">
+                <label for="office">Office</label>
+            </li>
+            <li>
+                <div id="roomTypeCheck"></div>
+                <input type="radio"  [(ngModel)]="pinboard.category" name="category" value="backyard" id="backyard">
+                <label for="backyard">Outdoor</label>
+            </li>
+        </ul>
+    </div>
+ 
     <button type ="submit" [disabled]="!PintrestForm.form.valid" >Get Pinterest Images</button>
-    
+   
   </form>
+</div>
+</div>
 </div>
 <br>
 <br>
 <!---Upload Images-->
+<div *ngIf="show_search_pin==false" > 
   <label><span id="label-no">OR</span> Upload Images
 </label>
 <br>
@@ -42,19 +79,27 @@
 <div class="gallery"  *ngFor="let fileUrl of base64Files">
   <img [src]="fileUrl"  />
 </div>
+</div>
 <br>
 <br>
 <br>
 <div *ngIf="base64Files.length >0">
 <button (click)="onSubmit()">Get Image color and Pattern</button>
 </div>
+<br>
+<div *ngIf="show_search_file==true" > 
+    <button type ="sumbit" (click)="displayImages()" >Search in Biglots.com</button>
+   </div>
+<div *ngIf="show_search_file==true" > 
+    <button type ="sumbit" (click)="displayImages()" >Search in Biglots.com</button>
+   </div>
   <div>
   <ul>
   <li *ngFor="let color of styleColor">{{color.w3c.name}} {{color.value}}</li>
   </ul>
   </div>
+
    <div class="relative">
-       
     <ul>
     <li *ngFor="let concept of styleConcept">{{concept.name}} {{concept.value}}</li>
     </ul>
@@ -67,43 +112,51 @@
       </ul>
       </div>
 
-      <div class="relative1" *ngIf="show_search==true" > 
-      <button type ="sumbit" (click)="displayImages()" >Search in Biglots.com</button>
-     </div>
-
-     
-    <!--
-     <div  class="gallery" *ngFor="let dispimage of pinterestImages ">
- 
-        <img src="{{dispimage.image.original.url}}" style="width:208px;height:284px;"/>
-         <br>
       
-       </div>
-      -->
+
+ 
 <br>
+<!--
       <div *ngIf="pinterestImages.length >0" >
           <button type ="sumbit" (click)="processPinterestImages()" >Search in Biglots.com</button>
          </div>
         <br>
-      <ngx-carousel
-      [inputs]="carouselOne"
-      (carouselLoad)="myfunc($event)">
-    <!--
-        <div  *ngFor="let dispimage of pinterestImages ">
         -->
-            <ngx-item NgxCarouselItem *ngFor="let dispimage of pinterestImages;let i=index ">
+     
+      <div class="relative2">
+          <div *ngIf="show_search_pin==true" >
+        
+            <button type ="sumbit" (click)="processPinterestImages()" >Search in Biglots.com</button>
           
-            <!--
-              alt="Responsive image"
-            <ngx-item *ngFor= "let dispimage of pinterestImages ">
-            -->
-             <img  class="gallery" src="{{dispimage.image.original.url}}" style="width:540px;height:540px;"  />
-            </ngx-item>
+           </div>
+        
+          <br>
       
-       
-        <button NgxCarouselPrev class='leftRs'>&lt;</button>
-        <button NgxCarouselNext class='rightRs'>&gt;</button>
-  </ngx-carousel>
-     <br>
-   
+        <div *ngIf="show_search_pin==true" >
+      
+
+          <ngx-carousel
+            [inputs]="carouselOne"
+                 (carouselLoad)="myfunc($event)">
     
+              <ngx-item NgxCarouselItem *ngFor="let dispimage of pinterestImages;let i=index ">
+            
+              <!--
+                alt="Responsive image"
+              <ngx-item *ngFor= "let dispimage of pinterestImages ">
+              -->
+               <img  class="gallery" src="{{dispimage.image.original.url}}" style="width:540px;height:540px;"  />
+              </ngx-item>
+        
+          <button NgxCarouselPrev class='leftRs'>&lt;</button>
+          <button NgxCarouselNext class='rightRs'>&gt;</button>
+        
+    </ngx-carousel>
+  
+  </div>
+</div>
+   
+
+      
+
+   

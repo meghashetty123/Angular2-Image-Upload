@@ -39,7 +39,8 @@ export class StyleFinderComponent implements OnInit {
   input_single:Input;
   data1:Data1;
   image:Image;
-  public show_search:boolean=false;
+  public show_search_file:boolean=false;
+  public show_search_pin:boolean=false;
 
   public base64Files: string[] = [];
   private files: any[] = [];
@@ -50,6 +51,7 @@ export class StyleFinderComponent implements OnInit {
 
   constructor(private styleService:StyleFinderService,private router:Router,private imageStore:Store<string[]>) { }
    pinboard=new PintrestBoard();
+   
   ngOnInit() {
     //console.log("Calling style Service");
    // this.styleService.getStyles().subscribe(p=>this.style = p);
@@ -68,8 +70,8 @@ export class StyleFinderComponent implements OnInit {
     loop: true,
     custom: 'banner'
   } 
-    
-  this.show_search=false;
+  this.pinboard.category="living";
+  this.show_search_file=false;
 
   }
 
@@ -113,6 +115,7 @@ export class StyleFinderComponent implements OnInit {
     this.imageStore.dispatch({type:LOAD,payload:this.base64Files})
 
    this.executeStyleService(); 
+   this.show_search_file=true;
   }
   shopnow() {
     
@@ -201,7 +204,7 @@ export class StyleFinderComponent implements OnInit {
 
    }
 
-   this.show_search=true; 
+   this.show_search_file=true; 
  }
  handleError(err)
  {
@@ -210,6 +213,7 @@ export class StyleFinderComponent implements OnInit {
 
  displayImages()
  {
+   
   this.router.navigateByUrl('/images');
  }
  processPinterestImages()
@@ -217,7 +221,9 @@ export class StyleFinderComponent implements OnInit {
   this.pinterestImages.forEach(value=>{this.base64Files.push(value.image.original.url)});
    console.log("Processing Pinterest Images");
 
- this.router.navigateByUrl('/images').then(()=>{ this.updateImageState()});
+   var to_url:string='/images/'+this.pinboard.category;
+   console.log("To Url",to_url);
+ this.router.navigateByUrl(to_url).then(()=>{ this.updateImageState()});
 
  }
  updateImageState()
@@ -238,7 +244,7 @@ export class StyleFinderComponent implements OnInit {
   var pinteresturl="https://api.pinterest.com/v1/boards/"+str_token[3]+"/"+str_token[4]+"/pins/?cursor=&access_token=AWl-T_33MC1DmnPkeTDpT_-VinxGFRTPLbusTn1Et357JYA7mQAAAAA&fields=image";
   console.log("User:",pinteresturl);
   this.styleService.getPinterestImages(pinteresturl).subscribe(res=>{ this.mapPinteresImages(res)});
-  this.show_search=true;
+  this.show_search_pin=true;
  }
  mapPinteresImages(res)
  {

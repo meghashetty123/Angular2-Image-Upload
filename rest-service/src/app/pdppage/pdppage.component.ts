@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { Router } from '@angular/router';
+import { Router, ActivatedRoute } from '@angular/router';
 import {Observable} from 'rxjs/Observable'
 import { StyleFinderService } from '../services/style-finder.service';
 import { ItemsEntity } from '../models/itemsEntity';
@@ -34,6 +34,7 @@ export class PdppageComponent implements OnInit {
     public itemList:ArticleResponse[]=[];
     inputImages: Observable<string[]>;
     public inputImageList:string[]=[];
+    public category;
     counter:number=0;
   //Styles variable.
  
@@ -42,7 +43,7 @@ export class PdppageComponent implements OnInit {
   stylePattern:ConceptsEntity[];
   
 
-  constructor(private styleService:StyleFinderService,private router:Router,private imageStore:Store<string[]>) {
+  constructor(private styleService:StyleFinderService,private router:Router,private route:ActivatedRoute,private imageStore:Store<string[]>) {
     this.inputImages = this.imageStore.pipe(select('imagestate'));
    }
 
@@ -63,8 +64,12 @@ export class PdppageComponent implements OnInit {
     } 
 
     this.inputImages.subscribe(data=>{this.inputImageList=data;console.log("Image Input",this.inputImageList);});
-     
-     this.processAll_Images();
+    this.route.paramMap.subscribe(params => {
+      console.log("Parameter:",params.get('Id'));
+       this.category=params.get('Id');
+       this.processAll_Images();
+    });
+    // this.processAll_Images();
    
     
 
@@ -130,7 +135,7 @@ getColorCriteria(v_pattern:string,return_str:string,value:string):string
        var v_pattern_uppercase:string=this.stylePattern[i].name.toLocaleUpperCase();
        
        
-      pillow_rug_pattern= pillow_rug_pattern+ " OR ((upper(OVERRIDE_PRODUCT_TITLE) like '%"+v_pattern_uppercase+"%')";
+      pillow_rug_pattern= pillow_rug_pattern+ " OR ((upper(OVERRIDE_PRODUCT_TITLE) like '%"+v_pattern_uppercase+"%'))";
 
     }
     
@@ -215,11 +220,11 @@ getColorCriteria(v_pattern:string,return_str:string,value:string):string
       { 
         if (chair_found || sofa_found || tvstand_found  || bed_found || rug_found || pillow_found)
         {
-          where_conditon  =where_conditon+ " OR (((upper(OVERRIDE_PRODUCT_TITLE) like '%RUG%' "+pillow_rug_pattern+") AND merchcat_subclass in  ('35081001', '35081002', '35081003', '35081005', '35081009', '35081010'  ))";
+          where_conditon  =where_conditon+ " OR (((upper(OVERRIDE_PRODUCT_TITLE) like '%RUG%' "+pillow_rug_pattern+" AND merchcat_subclass in  ('35081001', '35081002', '35081003', '35081005', '35081009', '35081010'  ))";
         }
        
         else{
-          where_conditon = "  (upper(OVERRIDE_PRODUCT_TITLE) like '%RUG%' "+pillow_rug_pattern+")  AND merchcat_subclass in  ('35081001', '35081002', '35081003', '35081005', '35081009', '35081010'  ))";
+          where_conditon = "  (upper(OVERRIDE_PRODUCT_TITLE) like '%RUG%' "+pillow_rug_pattern+"  AND merchcat_subclass in  ('35081001', '35081002', '35081003', '35081005', '35081009', '35081010'  ))";
 
         }
         rug_found=true;
@@ -232,7 +237,7 @@ getColorCriteria(v_pattern:string,return_str:string,value:string):string
         }
        
         else{
-          where_conditon = "  (upper(OVERRIDE_PRODUCT_TITLE) like '%PILLOW%' "+pillow_rug_pattern+") AND merchcat_subclass in  ('35078002', '35078006', '35078012','61005003', '35019001', '35019002', '35019003', '35019004'))";
+          where_conditon = "  (upper(OVERRIDE_PRODUCT_TITLE) like '%PILLOW%' "+pillow_rug_pattern+" AND merchcat_subclass in  ('35078002', '35078006', '35078012','61005003', '35019001', '35019002', '35019003', '35019004'))";
 
         }
         pillow_found=true;

@@ -17,7 +17,7 @@ import { StoreModule,Store } from '@ngrx/store';
 
 
 const appRoutes: Routes = [
-  { path: 'images', component: PdppageComponent },
+  { path: 'images/:Id', component: PdppageComponent },
   { path: 'finder', component: StyleFinderComponent },
   { path: '',
     redirectTo: '/finder',

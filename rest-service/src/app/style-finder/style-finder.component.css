@@ -8,6 +8,11 @@ div.relative1 {
     position: relative;
     right: -450px;
     top: -460px;
+}
+div.relative2 {
+        position: relative;
+        right: -100px;
+        top: -500px;
    
 }
 div.gallery img {
@@ -15,3 +20,394 @@ div.gallery img {
     height: auto;
 }
 
+.container_12 {
+    width: 850px;
+}
+.board-input {
+    padding: 40px 0 20px 0;
+    text-align: center;
+    display: inline-block;
+}
+.room-input {
+    padding-top: 40px;
+    text-align: center;
+    display: inline-block;
+    float: right;
+}
+
+.room-input.grid_4 {
+    float: right;
+}
+
+h1{
+    display: block;
+    text-align: center;
+    color: #FFFFFF;
+    background-color: #AEB6BF;
+    outline: 1px solid #fff;
+    outline-offset: -8px;
+    display: inline-block;
+    width: 300px;
+    font-size: 23px;
+    padding: 5px;
+    font-family: 'Arial Black';  
+}
+
+h1 span{
+    display: block;
+    text-align: center;
+    color: #FFFFFF;
+    background-color: #AEB6BF;
+    font-style: italic;
+    font-size: 13px;
+    padding: 5px;
+    font-family: 'Arial'; 
+}
+
+.image-preview-container {
+    height: 200px;
+}
+
+.image-preview-active {
+    color: #505050 !important;
+}
+
+.image-preview {
+    width: 540px;
+    height: auto;
+    margin-bottom: 25px;
+}
+
+.image-square {
+    z-index: 1;
+    width: 76px;
+    height: 110px;
+    background-color: #D6DBDF;
+    display: inline-block;
+    margin: 0 5px;
+}
+
+.image-square:nth-child(1) {
+    margin: 0 5px 0 0;
+}
+
+.image-square:nth-child(6) {
+    margin: 0 0 0 5px;
+}
+
+.image-list {
+    overflow: hidden;
+    opacity: 0;
+}
+
+.image-list.visible {
+    overflow: visible;
+    opacity: 1;
+}
+
+.image-list button, .slick-dots {
+    -webkit-animation: opacityKeyframe 1.7s linear;
+    -moz-animation: opacityKeyframe 1.7s linear;
+    -o-animation: opacityKeyframe 1.7s linear;
+    animation: opacityKeyframe 1.7s linear;
+    -webkit-transition: ease .3s;
+    -moz-transition: ease .3s;
+    -o-transition: ease .3s;
+    transition: ease .3s;
+}
+
+.image-list.slick-initialized.slick-slider.slick-dotted {
+    padding-left: 10px;
+}
+
+.image-list button.slick-prev:hover, .image-list button.slick-prev:focus {
+    
+    background-size: 20px;
+}
+
+.image-list button.slick-next:hover, .image-list button.slick-next:focus {
+    
+    background-size: 20px;
+}
+
+.image-list .slick-prev {
+    
+    height: 40px;
+    width: 20px;
+    background-size: 20px;
+    left: -45px;
+    top: 55px;
+    font-size: 0;
+    -webkit-transition: all 0.7s ease;
+    transition: all 0.7s ease;
+}
+
+.image-list .slick-next {
+    
+    height: 40px;
+    width: 20px;
+    background-size: 20px;
+    right: -45px;
+    top: 55px;
+    font-size: 0;
+    -webkit-transition: all 0.7s ease;
+    transition: all 0.7s ease;
+}
+
+.image-list .slick-prev:before, .slick-next:before {
+    font-size: 0 !important;
+}
+
+.image-list .slick-dots li button {
+    width: auto;
+    height: auto;
+    padding: 0;
+}
+
+.image-list .slick-dots li button:before
+{
+    font-family: 'slick';
+    font-size: 8px;
+    /*color: #ffffff !important;*/
+    line-height: 100%;
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 11px;
+    height: 11px;
+    content: '•';
+    text-align: center;
+    border-radius: 50%;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+}
+
+.image-list .slick-dots li.slick-active button:before {
+    border: none;
+}
+.room-options {
+    list-style-type:none;
+    margin:5px 0 0;
+    padding:0;
+}
+
+.room-options li {
+     margin:0 2px 0 0;
+     position:relative;
+     background-color: #ffffff;
+     display: inline-block;
+ }
+.room-options li,
+.room-options li label{
+    height:46px;
+    border-radius: 3px;
+    box-sizing: border-box;
+    display: block;
+    margin-bottom: 10px;
+}
+
+.room-options li label{
+    padding: 11px 24px;
+    font-family: GothamBook;
+}
+
+.room-options input{
+    padding: 0 12px;
+}
+
+.room-options label, .room-options input {
+    display:block;
+    position:relative;
+    top:-13px;
+    left:0;
+    right:0;
+    bottom:0;
+    margin: 0 !important;
+    color: #6b6b6b !important;
+}
+
+.room-options input[type="radio"] {
+    opacity:0.011;
+    z-index:100;
+}
+
+.room-options input[type="radio"]:checked + label {
+    background:#363636;
+    color: #ffffff !important;
+    border: 2px solid #363636;
+}
+
+.room-options label {
+    padding:5px;
+    cursor:pointer;
+    z-index:90;
+    font-size: 15px !important;
+    border: 2px solid #b7b7b7;
+    -webkit-transition: color .5s, background .5s, border .5s;
+    transition: color .5s, background .5s, border .5s;
+}
+
+.room-options label:hover {
+    background: #5D6D7E;
+    color: #ffffff !important;
+    border: 2px solid #5D6D7E;
+}
+.image-preview-container h4 {
+    display: block;
+    text-align: center;
+    color: #505050;
+    font-size: 14px;
+    font-family: Arial;
+    letter-spacing: 3px;
+    padding-top: 30px;
+}
+.url-check {
+    display: none;
+
+    background-size: 32px;
+    background-repeat: no-repeat;
+    width: 32px;
+    height: 32px;
+    float: right;
+    position: absolute;
+    margin-left: 522px;
+    margin-top: 58px;
+    -webkit-animation: fadein 2s; /* Safari, Chrome and Opera > 12.1 */
+    -moz-animation: fadein 2s; /* Firefox < 16 */
+    -ms-animation: fadein 2s; /* Internet Explorer */
+    -o-animation: fadein 2s; /* Opera < 12.1 */
+    animation: fadein 2s;
+}
+.label-url {
+    background-color: #ffffff;
+    display: inline-block;
+    padding: 12px 14px;
+    border: solid;
+    border-color: #6e6e6e;
+    border-width: thin;
+    text-align: center;
+    font-size: 16px;
+    color: #4a4a4a;
+    border-top-left-radius: 3px;
+    border-bottom-left-radius: 3px;
+    font-family: GothamBook;
+    vertical-align: middle;
+    max-height: 50px;
+    box-sizing: border-box;
+}
+.form-section label {
+    display: block;
+    text-align: left;
+    color: #363636;
+    font-size: 15px;
+    padding: 5px;
+    font-family: Gotham;
+}
+
+.form-section span#label-no {
+    border-radius: 50%;
+    width: 30px;
+    height: 30px;
+    margin: 0 5px 10px 0;
+    display: inline-block;
+    text-align: center;
+    font-size: 16px;
+    font-family: Gotham;
+    color: #ffffff;
+    line-height: 30px;
+    background-color: #FF6E33;
+}
+
+input[type=text] { 
+    width: 480px;
+    padding: 15px 18px 14px;
+    margin: 0 0 0 -10px;
+    box-sizing: border-box;
+    border: solid;
+    border-color: #6e6e6e;
+    border-width: thin;
+    font-size: 16px;
+    border-top-right-radius: 3px;
+    border-bottom-right-radius: 3px;
+    font-family: GothamBook;
+    height: 50px;
+    vertical-align: middle;
+}
+.submit-btn #btnSubmit {
+    height: 45px;
+    width: 190px;
+    color: #363636;
+    background-color: #D6DBDF;
+    border: 1px solid #363636;
+    margin: 10px 50px 60px;
+    cursor: pointer;
+    font-family: GothamBold;
+    font-size: 17px;
+    -webkit-transition: all 0.7s ease;
+    transition: all 0.7s ease;
+}
+
+.form-section[_ngcontent-c1] {
+    background-color: #F2F3F4;
+    height: 550px;
+}
+.form-section label {
+    display: block;
+    text-align: left;
+    color: #FF6E33;
+    text-decoration: underline;
+    font-style: bold;
+    font-size: 15px;
+    padding: 5px;
+    font-family: Gotham;
+}
+.form-section span#label-no {
+    border-radius: 50%;
+    width: 30px;
+    height: 30px;
+    margin: 0 5px 10px 0;
+    display: inline-block;
+    text-align: center;
+    font-size: 16px;
+    font-family: Gotham;
+    color: #ffffff;
+    line-height: 30px;
+    background-color: #FF6E33;
+}
+.form-section p {
+    margin: -15px 38px 0;
+    display: block;
+    font-family: GothamBook;
+    font-size: 13px;
+    font-style: italic;
+    color: #363636;
+    padding-bottom: 10px;
+}
+input[type=text] { 
+    width: 480px;
+    padding: 15px 18px 14px;
+    margin: 0 0 0 -10px;
+    box-sizing: border-box;
+    border: solid;
+    border-color: #6e6e6e;
+    border-width: thin;
+    font-size: 16px;
+    border-top-right-radius: 3px;
+    border-bottom-right-radius: 3px;
+    font-family: GothamBook;
+    height: 50px;
+    vertical-align: middle;
+}
+
+.gallery {
+    width: 76px;
+    height: auto;
+    background-color: #D6DBDF;
+    display: inline-block;
+    margin: 0 5px;    
+}
+
+div.gallery img {
+    width: 100%;
+    height: auto;
+}
