@@ -14,6 +14,7 @@ import { StyleFinderComponent } from './style-finder/style-finder.component';
 import { PdppageComponent } from './pdppage/pdppage.component';
 import { imageReducer } from './reducer/imagereducer';
 import { StoreModule,Store } from '@ngrx/store';
+import { SlickModule } from 'ngx-slick';
 
 
 const appRoutes: Routes = [
@@ -41,6 +42,7 @@ const appRoutes: Routes = [
     NgxCarouselModule,
     RouterModule.forRoot(appRoutes),
     StoreModule.forRoot({ imagestate: imageReducer}), 
+    SlickModule.forRoot(),
   ],
   providers: [UserService,StyleFinderService],
   bootstrap: [AppComponent]

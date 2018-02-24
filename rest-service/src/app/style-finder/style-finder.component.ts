@@ -17,6 +17,7 @@ import { PintrestBoard } from '../models/pintrestboard';
 import { Pintrest } from '../models/pinterest';
 import { PintrestDataEntity } from '../models/pinterestdataentity';
 import { NgxCarousel } from 'ngx-carousel';
+import { SlickModule } from 'ngx-slick';
 
 
 @Component({
@@ -41,6 +42,7 @@ export class StyleFinderComponent implements OnInit {
   image:Image;
   public show_search_file:boolean=false;
   public show_search_pin:boolean=false;
+  public slideConfig:any;
 
   public base64Files: string[] = [];
   private files: any[] = [];
@@ -48,6 +50,8 @@ export class StyleFinderComponent implements OnInit {
   public base64File:string;
   public board_url:string;
   public pinterestImages:PintrestDataEntity[]=[];
+
+
 
   constructor(private styleService:StyleFinderService,private router:Router,private imageStore:Store<string[]>) { }
    pinboard=new PintrestBoard();
@@ -70,8 +74,9 @@ export class StyleFinderComponent implements OnInit {
     loop: true,
     custom: 'banner'
   } 
-  this.pinboard.category="living";
+  this.pinboard.category="Living";
   this.show_search_file=false;
+  this.slideConfig = {"slidesToShow": 3, "slidesToScroll": 3};
 
   }
 
@@ -123,6 +128,7 @@ export class StyleFinderComponent implements OnInit {
   onSubmitForm(){
 
   }
+
   getImage(){
     console.log("Get  Images");
   }
@@ -213,8 +219,8 @@ export class StyleFinderComponent implements OnInit {
 
  displayImages()
  {
-   
-  this.router.navigateByUrl('/images');
+  var to_url:string='/images/'+this.pinboard.category; 
+  this.router.navigateByUrl(to_url);
  }
  processPinterestImages()
  {

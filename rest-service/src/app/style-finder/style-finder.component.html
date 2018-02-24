@@ -1,9 +1,7 @@
-
-
-<p>
  <!--
   style-finder works!
  -->
+ <p>
 </p>
 <!--
 <img src="../../assets/beach.jpg">
@@ -36,27 +34,27 @@
         <ul class="room-options" id="roomOptions">
             <li>
                 <div id="roomTypeCheck"></div>
-                <input type="radio"  [(ngModel)]="pinboard.category" name="category" value="living"  id="living" checked>
+                <input type="radio"  [(ngModel)]="pinboard.category" name="category" value="iving"  id="living" checked>
                 <label for="living">Living Room</label>
             </li>
             <li>
                 <div id="roomTypeCheck"></div>
-                <input type="radio" [(ngModel)]="pinboard.category" name="category" value="bedroom" id="bedroom">
+                <input type="radio" [(ngModel)]="pinboard.category" name="category" value="Bed" id="bedroom">
                 <label for="bedroom">Bedroom</label>
             </li>
             <li>
                 <div id="roomTypeCheck"></div>
-                <input type="radio"  [(ngModel)]="pinboard.category" name="category" value="dining-kitchen-furniture" id="dining-kitchen-furniture">
+                <input type="radio"  [(ngModel)]="pinboard.category" name="category" value="Dining-Kitchen-Furniture" id="dining-kitchen-furniture">
                 <label for="dining-kitchen-furniture">Dining Room + Kitchen</label>
             </li>
             <li>
                 <div id="roomTypeCheck"></div>
-                <input type="radio"  [(ngModel)]="pinboard.category" name="category"value="office" id="office">
+                <input type="radio"  [(ngModel)]="pinboard.category" name="category"value="Office" id="office">
                 <label for="office">Office</label>
             </li>
             <li>
                 <div id="roomTypeCheck"></div>
-                <input type="radio"  [(ngModel)]="pinboard.category" name="category" value="backyard" id="backyard">
+                <input type="radio"  [(ngModel)]="pinboard.category" name="category" value="Backyard" id="backyard">
                 <label for="backyard">Outdoor</label>
             </li>
         </ul>
@@ -90,9 +88,7 @@
 <div *ngIf="show_search_file==true" > 
     <button type ="sumbit" (click)="displayImages()" >Search in Biglots.com</button>
    </div>
-<div *ngIf="show_search_file==true" > 
-    <button type ="sumbit" (click)="displayImages()" >Search in Biglots.com</button>
-   </div>
+
   <div>
   <ul>
   <li *ngFor="let color of styleColor">{{color.w3c.name}} {{color.value}}</li>
@@ -131,7 +127,7 @@
            </div>
         
           <br>
-      
+  
         <div *ngIf="show_search_pin==true" >
       
 
@@ -141,10 +137,7 @@
     
               <ngx-item NgxCarouselItem *ngFor="let dispimage of pinterestImages;let i=index ">
             
-              <!--
-                alt="Responsive image"
-              <ngx-item *ngFor= "let dispimage of pinterestImages ">
-              -->
+           
                <img  class="gallery" src="{{dispimage.image.original.url}}" style="width:540px;height:540px;"  />
               </ngx-item>
         
@@ -154,6 +147,18 @@
     </ngx-carousel>
   
   </div>
+
+ <!-- You can now use your library component in app.component.html -->
+
+ <!--
+ <div *ngIf="show_search_pin==true" >
+ <ngx-slick class="carousel" #slickModal="slick-modal" [config]="slideConfig" (afterChange)="afterChange($event)">
+    <div ngxSlickItem *ngFor="let dispimage of pinterestImages" class="slide">
+          <img class="gallery" src="{{dispimage.image.original.url}}" style="width:540px;height:540px;">
+    </div>
+</ngx-slick>
+</div>
+-->
 </div>
    
 

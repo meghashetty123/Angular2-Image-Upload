@@ -1,0 +1,65 @@
+.results-header {
+    text-align: center;
+    position: relative;
+    background-color: #d6ebeb;
+    margin-bottom: 45px;
+}
+.results-clarifai h2 {
+    color: #363636;
+    font-size: 28px;
+    font-family: GothamBold;
+    text-transform: uppercase;
+    margin: -10px 0;
+}
+
+.results-clarifai h3 {
+    color: #319b9b;
+    font-size: 18px;
+    font-family: Gotham;
+    text-transform: uppercase;
+    padding: 0 0 20px;
+    margin: 0 auto;
+    text-align: center;
+    letter-spacing: 2px;
+    overflow: hidden;
+    max-width: 940px;
+}
+
+.results-clarifai h3:before,
+.results-clarifai h3:after {
+    background-color: #319b9b;
+    content: "";
+    display: inline-block;
+    height: 2px;
+    position: relative;
+    vertical-align: middle;
+    width: 50%;
+}
+
+.results-clarifai h3:before {
+    right: 0.5em;
+    margin-left: -50%;
+}
+
+.results-clarifai h3:after {
+    left: 0.5em;
+    margin-right: -50%;
+}
+
+.results-clarifai h4 {
+    color: #363636;
+    font-size: 18px;
+    font-family: GothamBook;
+    font-style: italic;
+    font-weight: 100;
+    padding: 23px 0;
+    margin-bottom: 0;
+    margin-left: auto;
+    width: 28%;
+    margin-right: auto;
+}
+
+.subcategories {
+    display: inline-block;
+    padding-bottom: 57px;
+}

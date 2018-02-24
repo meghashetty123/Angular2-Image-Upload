@@ -8,6 +8,20 @@
   
    </div>
   -->
+  <div class="results-clarifai">
+    <div class="results-header">
+        <h4>Meet your match!</h4>
+        <h2>{{category}} Room</h2>
+        <h4>Check out the products we think best represent your style.</h4>
+    </div>
+    <div class="container_12">
+        <div class="results-categories">
+            
+                <div *ngIf="sofa_found==true">     
+                    <h3>Sofas + Loveseats</h3>
+                    <div class="subcategories">
+                        
+   
 
   <ngx-carousel
       [inputs]="carouselOne"
@@ -15,7 +29,7 @@
     <!--
         <div  *ngFor="let dispimage of pinterestImages ">
         -->
-            <ngx-item NgxCarouselItem *ngFor="let dispimage of imageList;let i=index ">
+            <ngx-item NgxCarouselItem *ngFor="let dispimage of sofaImageList;let i=index ">
           
             <!--
               alt="Responsive image"
@@ -29,4 +43,117 @@
         <button NgxCarouselPrev class='leftRs'>&lt;</button>
         <button NgxCarouselNext class='rightRs'>&gt;</button>
   </ngx-carousel>
+  </div>
+</div>
+
+  <div *ngIf="chair_found==true">
+  <h3>Chairs</h3>
+        <div class="subcategories">
+
+  <ngx-carousel
+  [inputs]="carouselOne"
+  (carouselLoad)="myfunc($event)">
+<!--
+    <div  *ngFor="let dispimage of pinterestImages ">
+    -->
+        <ngx-item NgxCarouselItem *ngFor="let dispimage of chairImageList;let i=index ">
+      
+        <!--
+          alt="Responsive image"
+        <ngx-item *ngFor= "let dispimage of pinterestImages ">
+        -->
+        <img src="{{dispimage.Destination}}" style="width:540px;height:540px;"/>
+        <a href="{{dispimage.RecordName}}" target="_blank">Shop Now</a>
+        </ngx-item>
   
+   
+    <button NgxCarouselPrev class='leftRs'>&lt;</button>
+    <button NgxCarouselNext class='rightRs'>&gt;</button>
+</ngx-carousel>
+</div>
+</div>
+
+<div *ngIf="pillow_found==true">
+<h3>Pillows</h3>
+        <div class="subcategories">
+
+  <ngx-carousel
+  [inputs]="carouselOne"
+  (carouselLoad)="myfunc($event)">
+<!--
+    <div  *ngFor="let dispimage of pinterestImages ">
+    -->
+        <ngx-item NgxCarouselItem *ngFor="let dispimage of pillowImageList;let i=index ">
+      
+        <!--
+          alt="Responsive image"
+        <ngx-item *ngFor= "let dispimage of pinterestImages ">
+        -->
+        <img src="{{dispimage.Destination}}" style="width:540px;height:540px;"/>
+        <a href="{{dispimage.RecordName}}" target="_blank">Shop Now</a>
+        </ngx-item>
+  
+   
+    <button NgxCarouselPrev class='leftRs'>&lt;</button>
+    <button NgxCarouselNext class='rightRs'>&gt;</button>
+</ngx-carousel>
+</div>
+</div>
+
+<div *ngIf="lamp_found==true">
+       
+<h3>Lamps</h3>
+        <div class="subcategories">
+
+  <ngx-carousel
+  [inputs]="carouselOne"
+  (carouselLoad)="myfunc($event)">
+<!--
+    <div  *ngFor="let dispimage of pinterestImages ">
+    -->
+        <ngx-item NgxCarouselItem *ngFor="let dispimage of lampImageList;let i=index ">
+      
+        <!--
+          alt="Responsive image"
+        <ngx-item *ngFor= "let dispimage of pinterestImages ">
+        -->
+        <img src="{{dispimage.Destination}}" style="width:540px;height:540px;"/>
+        <a href="{{dispimage.RecordName}}" target="_blank">Shop Now</a>
+        </ngx-item>
+  
+   
+    <button NgxCarouselPrev class='leftRs'>&lt;</button>
+    <button NgxCarouselNext class='rightRs'>&gt;</button>
+</ngx-carousel>
+</div>
+</div>
+
+<div *ngIf="pillow_found==true">
+        
+<h3>Rugs</h3>
+        <div class="subcategories">
+
+  <ngx-carousel
+  [inputs]="carouselOne"
+  (carouselLoad)="myfunc($event)">
+<!--
+    <div  *ngFor="let dispimage of pinterestImages ">
+    -->
+        <ngx-item NgxCarouselItem *ngFor="let dispimage of rugImageList;let i=index ">
+      
+        <!--
+          alt="Responsive image"
+        <ngx-item *ngFor= "let dispimage of pinterestImages ">
+        -->
+        <img src="{{dispimage.Destination}}" style="width:540px;height:540px;"/>
+        <a href="{{dispimage.RecordName}}" target="_blank">Shop Now</a>
+        </ngx-item>
+  
+   
+    <button NgxCarouselPrev class='leftRs'>&lt;</button>
+    <button NgxCarouselNext class='rightRs'>&gt;</button>
+</ngx-carousel>
+</div>
+</div>
+    </div>
+  </div>

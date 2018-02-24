@@ -34,6 +34,26 @@ export class PdppageComponent implements OnInit {
     public itemList:ArticleResponse[]=[];
     inputImages: Observable<string[]>;
     public inputImageList:string[]=[];
+    public sofaImageList:ItemsEntity[]=[];
+    public chairImageList:ItemsEntity[]=[];
+    public bedImageList:ItemsEntity[]=[];
+    public rugImageList:ItemsEntity[]=[];
+    public pillowImageList:ItemsEntity[]=[];
+    public lampImageList:ItemsEntity[]=[];
+
+    public sofa_found:boolean;
+    public bed_found:boolean;
+    public chair_found:boolean;
+    public rug_found:boolean;
+    public pillow_found:boolean;
+    public lamp_found:boolean;
+    public sofa_found_once:boolean=false;
+    public chair_found_once:boolean=false;
+    public tvstand_found_once:boolean=false;
+    public bed_found_once:boolean=false;
+    public rug_found_once:boolean=false;
+    public pillow_found_once:boolean=false;
+    public lamp_found_once:boolean=false;
     public category;
     counter:number=0;
   //Styles variable.
@@ -63,7 +83,20 @@ export class PdppageComponent implements OnInit {
       custom: 'banner'
     } 
 
-    this.inputImages.subscribe(data=>{this.inputImageList=data;console.log("Image Input",this.inputImageList);});
+    this.sofa_found=false;
+    this.bed_found=false;
+    this.chair_found=false;
+    this.rug_found=false;
+    this.pillow_found=false;
+
+    this.sofa_found_once=false;
+    this.bed_found_once=false;
+    this.chair_found_once=false;
+    this.rug_found_once=false;
+    this.pillow_found_once=false;
+    this.lamp_found_once=false;
+    
+    this.inputImages.subscribe(data=>{this.inputImageList=data;});
     this.route.paramMap.subscribe(params => {
       console.log("Parameter:",params.get('Id'));
        this.category=params.get('Id');
@@ -121,13 +154,21 @@ getColorCriteria(v_pattern:string,return_str:string,value:string):string
    var selectionRoot:SelectionRootEntity;
     selectionRoot= new  SelectionRootEntity();
     var sel_fields ="select SKU_ID, OVERRIDE_PRODUCT_TITLE, true_color_desc from  ATG_PUB.extn_sku where";
-    var  where_conditon="";
+    var  sofa_where_conditon="";
+    var  bed_where_conditon="";
+    var  rug_where_conditon="";
+    var  pillow_where_conditon="";
+    var  lamp_where_conditon="";
+    var  chair_where_conditon="";
     var sofa_found:boolean=false;
     var chair_found:boolean=false;
     var tvstand_found:boolean=false;
     var bed_found:boolean=false;
     var rug_found:boolean=false;
     var pillow_found:boolean=false;
+    var lamp_found:boolean=false;
+
+   
     let pillow_rug_pattern="";
     let v_color="";
     for (var i=0; i< 2 ;i++)
@@ -172,19 +213,21 @@ getColorCriteria(v_pattern:string,return_str:string,value:string):string
 
     for (var i=0; i< this.styleConcept.length ;i++)
     {
+      /*
       if (i >10)
       break;
-      if(this.styleConcept[i].name ==='sofa')
+      */
+      if((this.styleConcept[i].name ==='sofa') && (this.category==='Living'))
       { 
         
-        if (chair_found || sofa_found || tvstand_found  || bed_found || rug_found || pillow_found)
-        {
-          where_conditon  = where_conditon+" OR (upper(OVERRIDE_PRODUCT_TITLE) like '%SOFA%'  and merchcat_subclass in ('60801002', '60801003', '60801004', '60801009'))";
-        }
-        else
-        {
-          where_conditon=" (upper(OVERRIDE_PRODUCT_TITLE) like '%SOFA%'  and merchcat_subclass in ('60801002', '60801003', '60801004', '60801009'))";
-        }
+       // if (chair_found || sofa_found || tvstand_found  || bed_found || rug_found || pillow_found)
+        //{
+        //  where_conditon  = where_conditon+" OR (upper(OVERRIDE_PRODUCT_TITLE) like '%SOFA%'  and merchcat_subclass in ('60801002', '60801003', '60801004', '60801009'))";
+        //}
+       // else
+        
+          sofa_where_conditon=" (upper(OVERRIDE_PRODUCT_TITLE) like '%SOFA%'  and merchcat_subclass in ('60801002', '60801003', '60801004', '60801009'))";
+        
         sofa_found=true;
         
       }
@@ -192,57 +235,74 @@ getColorCriteria(v_pattern:string,return_str:string,value:string):string
      
       else if(this.styleConcept[i].name ==='chair')
       {
-        if (chair_found || sofa_found || tvstand_found  || bed_found || rug_found || pillow_found)
-        {
-          where_conditon  =where_conditon+ " OR (upper(OVERRIDE_PRODUCT_TITLE) like '%CHAIR%'  AND  merchcat_subclass in ('60801002', '60801003', '60801004', '60801009') )";
-        }
+       // if (chair_found || sofa_found || tvstand_found  || bed_found || rug_found || pillow_found)
+       // {
+       //   where_conditon  =where_conditon+ " OR (upper(OVERRIDE_PRODUCT_TITLE) like '%CHAIR%'  AND  merchcat_subclass in ('60801002', '60801003', '60801004', '60801009') )";
+       // }
        
-        else{
-          where_conditon = "  (upper(OVERRIDE_PRODUCT_TITLE) like '%CHAIR%' AND  merchcat_subclass in ('60802001' , '60802002', '60802003', '60803001', '60803002', '60803004', '60803005') )";
+        
+          chair_where_conditon = "  (upper(OVERRIDE_PRODUCT_TITLE) like '%CHAIR%' AND  merchcat_subclass in ('60802001' , '60802002', '60802003', '60803001', '60803002', '60803004', '60803005') )";
 
-        }
+        
         chair_found=true;
       }
-      else if(this.styleConcept[i].name ==='bed')
+      else if(this.styleConcept[i].name ==='bed'  && this.category==='Bed')
       { 
+        /*
         if (chair_found || sofa_found || tvstand_found  || bed_found || rug_found || pillow_found)
         {
           where_conditon  =where_conditon+ " OR (upper(OVERRIDE_PRODUCT_TITLE) like '%BEDROOM%'  ) "+ pillow_rug_pattern;
         }
-       
-        else{
-          where_conditon = "  (upper(OVERRIDE_PRODUCT_TITLE) like '%BEDROOM%' ) "+ pillow_rug_pattern;
+       */
+       // else{
+          bed_where_conditon = "  (upper(OVERRIDE_PRODUCT_TITLE) like '%BEDROOM%' ) "+ pillow_rug_pattern;
 
-        }
+        
         bed_found=true;
       }
       else if(this.styleConcept[i].name ==='rug')
-      { 
+      { /*
         if (chair_found || sofa_found || tvstand_found  || bed_found || rug_found || pillow_found)
         {
           where_conditon  =where_conditon+ " OR (((upper(OVERRIDE_PRODUCT_TITLE) like '%RUG%' "+pillow_rug_pattern+" AND merchcat_subclass in  ('35081001', '35081002', '35081003', '35081005', '35081009', '35081010'  ))";
         }
        
         else{
-          where_conditon = "  (upper(OVERRIDE_PRODUCT_TITLE) like '%RUG%' "+pillow_rug_pattern+"  AND merchcat_subclass in  ('35081001', '35081002', '35081003', '35081005', '35081009', '35081010'  ))";
+      */
+          //rug_where_conditon = "  (upper(OVERRIDE_PRODUCT_TITLE) like '%RUG%' "+pillow_rug_pattern+"  AND merchcat_subclass in  ('35081001', '35081002', '35081003', '35081005', '35081009', '35081010'  ))";
+          rug_where_conditon = "  (upper(OVERRIDE_PRODUCT_TITLE) like '%RUG%' "+"  AND merchcat_subclass in  ('35081001', '35081002', '35081003', '35081005', '35081009', '35081010'  ))";
 
-        }
+        
         rug_found=true;
       }
       else if(this.styleConcept[i].name ==='pillow')
-      { 
+      { /*
         if (chair_found || sofa_found || tvstand_found  || bed_found || rug_found || pillow_found)
         {
           where_conditon  =where_conditon+ " OR (upper(OVERRIDE_PRODUCT_TITLE) like '%PILLOW%'  AND merchcat_subclass in  ('35078002', '35078006', '35078012','61005003', '35019001', '35019002', '35019003', '35019004'))";
         }
        
         else{
-          where_conditon = "  (upper(OVERRIDE_PRODUCT_TITLE) like '%PILLOW%' "+pillow_rug_pattern+" AND merchcat_subclass in  ('35078002', '35078006', '35078012','61005003', '35019001', '35019002', '35019003', '35019004'))";
+          */
+          pillow_where_conditon = "  (upper(OVERRIDE_PRODUCT_TITLE) like '%PILLOW%' "+pillow_rug_pattern+" AND merchcat_subclass in  ('35078002', '35078006', '35078012','61005003', '35019001', '35019002', '35019003', '35019004'))";
 
-        }
+        
         pillow_found=true;
       }
+      else if(this.styleConcept[i].name ==='lamp')
+      { /*
+        if (chair_found || sofa_found || tvstand_found  || bed_found || rug_found || pillow_found)
+        {
+          where_conditon  =where_conditon+ " OR (upper(OVERRIDE_PRODUCT_TITLE) like '%LAMP%'  AND merchcat_subclass in  ('35078002', '35078006', '35078012','61005003', '35019001', '35019002', '35019003', '35019004'))";
+        }
+       
+        else{
+          */
+          lamp_where_conditon = "  (upper(OVERRIDE_PRODUCT_TITLE) like '%LAMP%' )";
 
+        
+        lamp_found=true;
+      }
            
     }
 /*
@@ -255,66 +315,121 @@ getColorCriteria(v_pattern:string,return_str:string,value:string):string
     */
    // selectionRoot.SQL_Query="select SKU_ID, OVERRIDE_PRODUCT_TITLE, true_color_desc from  ATG_PUB.extn_sku where upper(OVERRIDE_PRODUCT_TITLE) like '%SOFA%'  and merchcat_subclass in ('60801002', '60801003', '60801004', '60801009') and true_color_desc in ('Brown','Blue')";
 
-     selectionRoot.SQL_Query=sel_fields + where_conditon;
+   if(sofa_found  &&  this.sofa_found_once===false)
+   {
+      this.sofa_found_once=true;
+     selectionRoot.SQL_Query=sel_fields + sofa_where_conditon;
 
-    console.log("Selection Criterida:",selectionRoot.SQL_Query);
+    console.log("Sofa Selection Criterida:",selectionRoot.SQL_Query);
     selectionPayLoad.root=selectionRoot;
 
-     this.styleService.getBiglotsItem(selectionPayLoad,itemurl).subscribe( res=> {this.setItemList(res);console.log("Calling SetItemList");});
-     
-  
+     this.styleService.getBiglotsItem(selectionPayLoad,itemurl).subscribe( res=> {this.setItemList(res,'sofa');});
+   }
+    
+   if(bed_found &&  this.bed_found_once===false)
+   {
+    this.bed_found_once=true;
+     selectionRoot.SQL_Query=sel_fields + bed_where_conditon;
+
+    console.log("Bed Selection Criterida:",selectionRoot.SQL_Query);
+    selectionPayLoad.root=selectionRoot;
+
+     this.styleService.getBiglotsItem(selectionPayLoad,itemurl).subscribe( res=> {this.setItemList(res,'bed');});
+   }
+   if(chair_found && this.chair_found_once===false)
+   {
+    this.chair_found_once=true
+     selectionRoot.SQL_Query=sel_fields + chair_where_conditon;
+
+    console.log("Chair Selection Criterida:",selectionRoot.SQL_Query);
+    selectionPayLoad.root=selectionRoot;
+
+     this.styleService.getBiglotsItem(selectionPayLoad,itemurl).subscribe( res=> {this.setItemList(res,'chair');});
+   }
+   if(rug_found && this.rug_found_once===false)
+   {
+
+    this.rug_found_once=true;
+     selectionRoot.SQL_Query=sel_fields + rug_where_conditon;
+
+    console.log("Rug Selection Criterida:",selectionRoot.SQL_Query);
+    selectionPayLoad.root=selectionRoot;
+
+     this.styleService.getBiglotsItem(selectionPayLoad,itemurl).subscribe( res=> {this.setItemList(res,'rug');});
+   }
+   if(pillow_found && this.pillow_found_once===false)
+   {
+    this.pillow_found_once=true
+     selectionRoot.SQL_Query=sel_fields + pillow_where_conditon;
+
+    console.log("Pillow Selection Criterida:",selectionRoot.SQL_Query);
+    selectionPayLoad.root=selectionRoot;
+
+     this.styleService.getBiglotsItem(selectionPayLoad,itemurl).subscribe( res=> {this.setItemList(res,'pillow');});
+   }
+
+   if(lamp_found && this.lamp_found_once===false)
+   {
+    this.lamp_found_once=true
+     selectionRoot.SQL_Query=sel_fields + lamp_where_conditon;
+
+    console.log("Lamp Selection Criterida:",selectionRoot.SQL_Query);
+    selectionPayLoad.root=selectionRoot;
+
+     this.styleService.getBiglotsItem(selectionPayLoad,itemurl).subscribe( res=> {this.setItemList(res,'lamp');});
+   }
 
  }
- getImagesFromBiglots(skuId:string)
+ getImagesFromBiglots(skuId:string,type:string)
  {
   let itemurl="http://hnwvq-cumweb01/CIP/metadata/search/webimage/fields?user=ImageStateMachine&password=bi9lot5!&serveraddress=hnwvq-cumapp01&querystring='{af4b2e00-5f6a-11d2-8f20-0000c0e166dc}:Record Name' ? '";
         
        itemurl= itemurl+skuId;
          itemurl=itemurl+"'";
          console.log("Item URL",itemurl);
-         this.styleService.getBiglotsImage(itemurl).subscribe( res=> {this.setImages(res,skuId)});
+         this.styleService.getBiglotsImage(itemurl).subscribe( res=> {this.setImages(res,skuId,type)});
           
 }  
   
  
 
-  setItemList(res)
+  setItemList(res,type)
   {
   // this.counter++;
     //console.log("Calling SetItemList",this.counter);
     const data=res; 
 
   //const newdata = JSON.parse(data);
-  console.log("ItemResponse",res);
+ // console.log("ItemResponse",res);
   this.itemResponse=res.json();
   this.itemList=this.itemResponse.ATG_ArticleLookup_Response.root;
-  console.log("ItemList",this.itemList);
-  console.log("Input Image Array Size",this.itemList.length);
+  //console.log("ItemList",this.itemList);
+ // console.log("Input Image Array Size",this.itemList.length);
     
-   console.log("Starting to get the Images");
+  // console.log("Starting to get the Images");
           if  (this.itemList.length >0 )
           {
             
 
              for (var i=0; i<10; i++){
-                  this.getImagesFromBiglots(this.itemList[i].SKU_ID);
+                  this.getImagesFromBiglots(this.itemList[i].SKU_ID,type);
         
                 }
           }
 
   }
 
-  setImages(res,skuId:string)
+  setImages(res,skuId:string,type:string)
  {
    this.counter++;
-  console.log("Calling setImages",this.counter);
+  //console.log("Calling setImages",this.counter);
   const data=res; 
 
 
   var v_imageUrls:BiglotsImage; 
    v_imageUrls=this.imageUrls=res.json();
-   console.log("Getting Image for Article:",skuId);
-  console.log("Image Array",v_imageUrls.items.length);
+  // console.log("Getting Image for Article:",skuId);
+  //console.log("Image Array",v_imageUrls.items.length);
 
 
   
@@ -346,7 +461,36 @@ getColorCriteria(v_pattern:string,return_str:string,value:string):string
     v_imageUrls.items[i].Destination=lv_url;
     v_imageUrls.items[i].RecordName=lv_href;
   
-    this.imageList.push(v_imageUrls.items[i]);
+    if (type==='sofa')
+    {
+       this.sofa_found=true;
+      this.sofaImageList.push(v_imageUrls.items[i]);
+    }
+    if (type==='bed')
+    {
+      this.bed_found=true;
+      this.bedImageList.push(v_imageUrls.items[i]);
+    }
+    if (type==='chair')
+    {
+      this.chair_found=true;
+      this.chairImageList.push(v_imageUrls.items[i]);
+    }
+    if (type==='rug')
+    {
+      this.rug_found=true;
+      this.rugImageList.push(v_imageUrls.items[i]);
+    }
+    if (type==='pillow')
+    {
+      this.pillow_found=true;
+      this.pillowImageList.push(v_imageUrls.items[i]);
+    }
+    if (type==='lamp')
+    {
+      this.lamp_found=true;
+      this.lampImageList.push(v_imageUrls.items[i]);
+    }
   
    
     console.log("HRef:",lv_href);
@@ -367,7 +511,7 @@ getColorCriteria(v_pattern:string,return_str:string,value:string):string
        {
          return;
        }
-       console.log("Input Image Count:",this.inputImageList.length);
+      // console.log("Input Image Count:",this.inputImageList.length);
    // for (var i=0; i<this.inputImageList.length; i++)
     
    for (var i=0; i<this.inputImageList.length; i++)
@@ -395,7 +539,7 @@ getColorCriteria(v_pattern:string,return_str:string,value:string):string
     var styleinput_load:Input[]=[styleinput_single];
    
     stylebody.inputs=styleinput_load;
-    console.log("payload:",stylebody.inputs);
+    //console.log("payload:",stylebody.inputs);
    
        
    let post_url ='https://api.clarifai.com/v2/models/eeed0b6733a644cea07cf4c60f87ebb7/outputs'; //Color
@@ -476,7 +620,7 @@ getColorCriteria(v_pattern:string,return_str:string,value:string):string
  }
  handleError(err)
  {
-  console.log("Calling style Service",err);
+  //console.log("Calling style Service",err);
  }
 
 
