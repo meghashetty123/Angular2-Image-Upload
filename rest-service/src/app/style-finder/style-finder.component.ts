@@ -62,18 +62,22 @@ export class StyleFinderComponent implements OnInit {
   // this.getDbconnection();
   this.base64Files=[];
   this.carouselOne = {
-    grid: {xs: 1, sm: 1, md: 1, lg: 1, all: 0},
-    slide: 1,
+    grid: {xs: 1, sm: 1, md: 3, lg: 2, all: 0},
+    slide: 2,
     speed: 400,
-    interval: 4000,
+    interval: 10000,
     point: {
       visible: true
     },
     load: 2,
     touch: true,
     loop: true,
-    custom: 'banner'
+    animation: 'lazy',
+    easing: 'ease',
+    
+    //custom: 'banner'
   } 
+
   this.pinboard.category="Living";
   this.show_search_file=false;
   this.slideConfig = {"slidesToShow": 3, "slidesToScroll": 3};

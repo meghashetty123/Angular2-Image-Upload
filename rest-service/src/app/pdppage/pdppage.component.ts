@@ -70,18 +70,21 @@ export class PdppageComponent implements OnInit {
   ngOnInit() {
 
     this.carouselOne = {
-      grid: {xs: 1, sm: 1, md: 1, lg: 1, all: 0},
-      slide: 1,
+      grid: {xs: 1, sm: 1, md: 3, lg: 2, all: 0},
+      slide: 2,
       speed: 400,
-      interval: 4000,
+      interval: 10000,
       point: {
         visible: true
       },
       load: 2,
       touch: true,
       loop: true,
+      animation: 'lazy',
+    easing: 'ease',
       custom: 'banner'
     } 
+
 
     this.sofa_found=false;
     this.bed_found=false;

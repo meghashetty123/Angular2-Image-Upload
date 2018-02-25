@@ -4,7 +4,7 @@ import {Style} from  '../models/style';
 import { Http, Response, Headers, RequestOptions } from '@angular/http';
 import { promise } from "selenium-webdriver";
 import { Payload } from "../models/payload";
-import {wrap} from "node-mysql-wrapper";
+//import {wrap} from "node-mysql-wrapper";
 import { SelectionPayload } from "../models/selectionpayload";
 
 @Injectable()

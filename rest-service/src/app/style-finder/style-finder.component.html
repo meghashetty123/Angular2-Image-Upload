@@ -1,167 +1,190 @@
- <!--
-  style-finder works!
- -->
- <p>
-</p>
-<!--
-<img src="../../assets/beach.jpg">
--->
-
-<div class="form-section" id="form-section">
-    <div class="container_12">
-   <div class="form">
-  <form (ngSubmit)="getPintrestImages()" #PintrestForm="ngForm">
-
-      <div class="board-input grid_7">
-          <div class="url-check" id="url-check"></div>
-          <label><span id="label-no">1</span> PASTE A PINTEREST LINK
-              <p>Tip: You can enter any public Pinterest board, regardless if it's yours.</p>
-          </label>
-          <div class="label-url">
-              URL
-          </div>
-      
-             
-    <input  type="text"  required minlength="4"   [(ngModel)]="pinboard.boardurl"  placeholder="https://www.pinterest.com/username/board" name="boardurl"  #boardurl="ngModel">
-    <div [hidden]="boardurl.valid || boardurl.pristine" class="alert alert-danger">
-        UUID IS required
-      </div>
-   
-  </div>
-
-    <div class="room-input grid_4">
-        <label><span id="label-no">2</span> SELECT A CATEGORY</label>
-        <ul class="room-options" id="roomOptions">
-            <li>
-                <div id="roomTypeCheck"></div>
-                <input type="radio"  [(ngModel)]="pinboard.category" name="category" value="iving"  id="living" checked>
-                <label for="living">Living Room</label>
-            </li>
-            <li>
-                <div id="roomTypeCheck"></div>
-                <input type="radio" [(ngModel)]="pinboard.category" name="category" value="Bed" id="bedroom">
-                <label for="bedroom">Bedroom</label>
-            </li>
-            <li>
-                <div id="roomTypeCheck"></div>
-                <input type="radio"  [(ngModel)]="pinboard.category" name="category" value="Dining-Kitchen-Furniture" id="dining-kitchen-furniture">
-                <label for="dining-kitchen-furniture">Dining Room + Kitchen</label>
-            </li>
-            <li>
-                <div id="roomTypeCheck"></div>
-                <input type="radio"  [(ngModel)]="pinboard.category" name="category"value="Office" id="office">
-                <label for="office">Office</label>
-            </li>
-            <li>
-                <div id="roomTypeCheck"></div>
-                <input type="radio"  [(ngModel)]="pinboard.category" name="category" value="Backyard" id="backyard">
-                <label for="backyard">Outdoor</label>
-            </li>
-        </ul>
-    </div>
- 
-    <button type ="submit" [disabled]="!PintrestForm.form.valid" >Get Pinterest Images</button>
-   
-  </form>
-</div>
-</div>
-</div>
-<br>
-<br>
-<!---Upload Images-->
-<div *ngIf="show_search_pin==false" > 
-  <label><span id="label-no">OR</span> Upload Images
-</label>
-<br>
-<input type="file"  name="img"  multiple (change)="onChange($event)" />
-<div class="gallery"  *ngFor="let fileUrl of base64Files">
-  <img [src]="fileUrl"  />
-</div>
-</div>
-<br>
-<br>
-<br>
-<div *ngIf="base64Files.length >0">
-<button (click)="onSubmit()">Get Image color and Pattern</button>
-</div>
-<br>
-<div *ngIf="show_search_file==true" > 
-    <button type ="sumbit" (click)="displayImages()" >Search in Biglots.com</button>
-   </div>
-
-  <div>
-  <ul>
-  <li *ngFor="let color of styleColor">{{color.w3c.name}} {{color.value}}</li>
-  </ul>
-  </div>
-
-   <div class="relative">
-    <ul>
-    <li *ngFor="let concept of styleConcept">{{concept.name}} {{concept.value}}</li>
-    </ul>
-   </div>
-  
-      <div class="relative1" >
-      
-      <ul>
-      <li *ngFor="let pattern of stylePattern">{{pattern.name}} {{pattern.value}}</li>
-      </ul>
-      </div>
-
-      
-
- 
-<br>
-<!--
-      <div *ngIf="pinterestImages.length >0" >
-          <button type ="sumbit" (click)="processPinterestImages()" >Search in Biglots.com</button>
-         </div>
-        <br>
-        -->
-     
-      <div class="relative2">
-          <div *ngIf="show_search_pin==true" >
-        
-            <button type ="sumbit" (click)="processPinterestImages()" >Search in Biglots.com</button>
-          
-           </div>
-        
-          <br>
-  
-        <div *ngIf="show_search_pin==true" >
-      
-
-          <ngx-carousel
-            [inputs]="carouselOne"
-                 (carouselLoad)="myfunc($event)">
+<p>
+        <!--
+      style-finder works!
+     -->
+    </p>
+    <!--
+    <img src="../../assets/beach.jpg">
+    -->
     
-              <ngx-item NgxCarouselItem *ngFor="let dispimage of pinterestImages;let i=index ">
-            
-           
-               <img  class="gallery" src="{{dispimage.image.original.url}}" style="width:540px;height:540px;"  />
-              </ngx-item>
-        
-          <button NgxCarouselPrev class='leftRs'>&lt;</button>
-          <button NgxCarouselNext class='rightRs'>&gt;</button>
-        
-    </ngx-carousel>
-  
-  </div>
-
- <!-- You can now use your library component in app.component.html -->
-
- <!--
- <div *ngIf="show_search_pin==true" >
- <ngx-slick class="carousel" #slickModal="slick-modal" [config]="slideConfig" (afterChange)="afterChange($event)">
-    <div ngxSlickItem *ngFor="let dispimage of pinterestImages" class="slide">
-          <img class="gallery" src="{{dispimage.image.original.url}}" style="width:540px;height:540px;">
+    <div align="center" class="form-section" id="form-section">
+        <div class="container_12">
+            <div class="form">
+                <form (ngSubmit)="getPintrestImages()" #PintrestForm="ngForm">
+    
+                    <div class="board-input grid_7">
+                        <div class="url-check" id="url-check"></div>
+                        <label>
+                            <span id="label-no">1</span> PASTE A PINTEREST LINK
+                            <p>Tip: You can enter any public Pinterest board, regardless if it's yours.</p>
+                        </label>
+                        <div class="label-url">
+                            URL
+                        </div>
+    
+    
+                        <input type="text" required minlength="4" [(ngModel)]="pinboard.boardurl" placeholder="https://www.pinterest.com/username/board"
+                            name="boardurl" #boardurl="ngModel">
+                        <div [hidden]="boardurl.valid || boardurl.pristine" class="alert alert-danger">
+                            UUID IS required
+                        </div>
+                        
+                        
+                        <div align="left" >
+                                <button type="submit" [disabled]="!PintrestForm.form.valid">Get Pinterest Images</button>
+                            </div>
+    
+                         
+                                <div align="left" *ngIf="show_search_pin==false">
+                                        <label>
+                                            <span id="label-no">OR</span> Upload Images
+                                        </label>
+                                        <br>
+                                        <input type="file" name="img" multiple (change)="onChange($event)" />
+                                        <div class="gallery" *ngFor="let fileUrl of base64Files">
+                                            <img [src]="fileUrl" />
+                                        </div>
+                                    </div>
+                             
+                                
+                    </div>
+    
+                    <div class="room-input grid_4">
+                        <label>
+                            <span id="label-no">2</span> SELECT A CATEGORY</label>
+                        <ul class="room-options" id="roomOptions">
+                            <li>
+                                <div id="roomTypeCheck"></div>
+                                <input type="radio" [(ngModel)]="pinboard.category" name="category" value="Living" id="living" checked>
+                                <label for="living">Living Room</label>
+                            </li>
+                            <li>
+                                <div id="roomTypeCheck"></div>
+                                <input type="radio" [(ngModel)]="pinboard.category" name="category" value="Bed" id="bedroom">
+                                <label for="bedroom">Bedroom</label>
+                            </li>
+                            <li>
+                                <div id="roomTypeCheck"></div>
+                                <input type="radio" [(ngModel)]="pinboard.category" name="category" value="Dining-kitchen-furniture" id="dining-kitchen-furniture">
+                                <label for="dining-kitchen-furniture">Dining Room + Kitchen</label>
+                            </li>
+                            <li>
+                                <div id="roomTypeCheck"></div>
+                                <input type="radio" [(ngModel)]="pinboard.category" name="category" value="Office" id="office">
+                                <label for="office">Office</label>
+                            </li>
+                            <li>
+                                <div id="roomTypeCheck"></div>
+                                <input type="radio" [(ngModel)]="pinboard.category" name="category" value="Backyard" id="backyard">
+                                <label for="backyard">Outdoor</label>
+                            </li>
+                        </ul>
+                    </div>
+    
+                   <!-- <button type="submit" [disabled]="!PintrestForm.form.valid">Get Pinterest Images</button> -->
+    
+                    <!---Upload Images-->
+    
+    <br>
+    <br>
+    <br>
+    
+    <br>
+    
+                </form>
+    
+                
+    
+            </div>
+        </div>
     </div>
-</ngx-slick>
-</div>
--->
-</div>
-   
+    <br>
+    <br>
+    <!---Upload Images-->
+    
+    
+    
+    <!-- BOTTOM SECTION FOR UPLOAD IMAGES ENDS HERE -->
+    
+    <!--
+          <div *ngIf="pinterestImages.length >0" >
+              <button type ="sumbit" (click)="processPinterestImages()" >Search in Biglots.com</button>
+             </div>
+            <br>
+            -->
 
-      
 
-   
+   <div *ngIf="show_search_pin==true">
+      <div align="center" class="form-section2" id="form-section2">
+       <div class="container_13">
+     
+            
+    <div class="relative2">
+        <div *ngIf="show_search_pin==true">
+    
+            <button type="sumbit" (click)="processPinterestImages()">Search in Biglots.com</button>
+    
+        </div>
+    
+        <br>
+    
+        <div *ngIf="show_search_pin==true">
+    
+    
+            <ngx-carousel [inputs]="carouselOne" (carouselLoad)="myfunc($event)">
+    
+                <ngx-tile NgxCarouselItem *ngFor="let dispimage of pinterestImages;let i=index ">
+    
+                    <!--
+                    alt="Responsive image"
+                  <ngx-item *ngFor= "let dispimage of pinterestImages ">
+                      style="width:420px;height:420px;" 
+    
+                  -->
+                   
+                        <img class="gallery" src="{{dispimage.image.original.url}}" style="width:475px;height:300px;"/>
+                   
+                </ngx-tile>
+    
+                <button NgxCarouselPrev class='leftRs'>&lt;</button>
+                <button NgxCarouselNext class='rightRs'>&gt;</button>
+    
+            </ngx-carousel>
+    
+        </div>
+    </div>
+    
+   </div>
+    </div>
+    </div>
+    
+    <div class="relative3"  *ngIf="base64Files.length >0">
+            <button (click)="onSubmit()">Get Image color and Pattern</button>
+        </div>
+        <br>
+
+ <div *ngIf="show_search_file==true">
+        <div class="relative3" *ngIf="show_search_file==true" >
+            <button type="sumbit" (click)="displayImages()">Search in Biglots.com</button>
+        </div>
+        
+        <div> <p>Color</p>
+            <ul>
+                <li *ngFor="let color of styleColor">{{color.w3c.name}} {{color.value}}</li>
+            </ul>
+        </div>
+        
+        <div class="relative"> <p>Image Identification</p>
+            <ul>
+                <li *ngFor="let concept of styleConcept">{{concept.name}} {{concept.value}}</li>
+            </ul>
+        </div>
+        
+        <div class="relative1"><p>Pattern</p>
+        
+            <ul>
+                <li *ngFor="let pattern of stylePattern">{{pattern.name}} {{pattern.value}}</li>
+            </ul>
+        </div>
+
+</div>

@@ -23,26 +23,33 @@
                         
    
 
-  <ngx-carousel
-      [inputs]="carouselOne"
-      (carouselLoad)="myfunc($event)">
-    <!--
-        <div  *ngFor="let dispimage of pinterestImages ">
-        -->
-            <ngx-item NgxCarouselItem *ngFor="let dispimage of sofaImageList;let i=index ">
-          
-            <!--
-              alt="Responsive image"
-            <ngx-item *ngFor= "let dispimage of pinterestImages ">
-            -->
-            <img src="{{dispimage.Destination}}" style="width:540px;height:540px;"/>
-            <a href="{{dispimage.RecordName}}" target="_blank">Shop Now</a>
-            </ngx-item>
-      
-       
-        <button NgxCarouselPrev class='leftRs'>&lt;</button>
-        <button NgxCarouselNext class='rightRs'>&gt;</button>
-  </ngx-carousel>
+                            <div align="center" class="form-section2" id="form-section2">
+                                    <div class="container_13">
+                                       
+                                    <ngx-carousel
+                                        [inputs]="carouselOne"
+                                        (carouselLoad)="myfunc($event)">
+                                      <!--
+                                          <div  *ngFor="let dispimage of pinterestImages ">
+                                          -->
+                                              <ngx-tile NgxCarouselItem *ngFor="let dispimage of sofaImageList;let i=index ">
+                                            
+                                              <!--
+                                                alt="Responsive image"
+                                              <ngx-item *ngFor= "let dispimage of pinterestImages ">
+                                              -->
+                                              <img src="{{dispimage.Destination}}" style="width:475px;height:300px;"/>
+                                              <a href="{{dispimage.RecordName}}" target="_blank">Shop Now</a>
+                                              </ngx-tile>
+                                        
+                                         
+                                          <button NgxCarouselPrev class='leftRs'>&lt;</button>
+                                          <button NgxCarouselNext class='rightRs'>&gt;</button>
+                                    </ngx-carousel>
+                                  
+                                  </div>
+                                  </div>
+                                    
   </div>
 </div>
 
@@ -50,26 +57,32 @@
   <h3>Chairs</h3>
         <div class="subcategories">
 
-  <ngx-carousel
-  [inputs]="carouselOne"
-  (carouselLoad)="myfunc($event)">
-<!--
-    <div  *ngFor="let dispimage of pinterestImages ">
-    -->
-        <ngx-item NgxCarouselItem *ngFor="let dispimage of chairImageList;let i=index ">
-      
-        <!--
-          alt="Responsive image"
-        <ngx-item *ngFor= "let dispimage of pinterestImages ">
-        -->
-        <img src="{{dispimage.Destination}}" style="width:540px;height:540px;"/>
-        <a href="{{dispimage.RecordName}}" target="_blank">Shop Now</a>
-        </ngx-item>
-  
-   
-    <button NgxCarouselPrev class='leftRs'>&lt;</button>
-    <button NgxCarouselNext class='rightRs'>&gt;</button>
-</ngx-carousel>
+                <div align="center" class="form-section2" id="form-section2">
+                        <div class="container_13">
+                           
+                        <ngx-carousel
+                            [inputs]="carouselOne"
+                            (carouselLoad)="myfunc($event)">
+                          <!--
+                              <div  *ngFor="let dispimage of pinterestImages ">
+                              -->
+                                  <ngx-tile NgxCarouselItem *ngFor="let dispimage of chairImageList;let i=index ">
+                                
+                                  <!--
+                                    alt="Responsive image"
+                                  <ngx-item *ngFor= "let dispimage of pinterestImages ">
+                                  -->
+                                  <img src="{{dispimage.Destination}}" style="width:475px;height:300px;"/>
+                                  <a href="{{dispimage.RecordName}}" target="_blank">Shop Now</a>
+                                  </ngx-tile>
+                            
+                             
+                              <button NgxCarouselPrev class='leftRs'>&lt;</button>
+                              <button NgxCarouselNext class='rightRs'>&gt;</button>
+                        </ngx-carousel>
+                      
+                      </div>
+                      </div>
 </div>
 </div>
 
@@ -77,26 +90,32 @@
 <h3>Pillows</h3>
         <div class="subcategories">
 
-  <ngx-carousel
-  [inputs]="carouselOne"
-  (carouselLoad)="myfunc($event)">
-<!--
-    <div  *ngFor="let dispimage of pinterestImages ">
-    -->
-        <ngx-item NgxCarouselItem *ngFor="let dispimage of pillowImageList;let i=index ">
-      
-        <!--
-          alt="Responsive image"
-        <ngx-item *ngFor= "let dispimage of pinterestImages ">
-        -->
-        <img src="{{dispimage.Destination}}" style="width:540px;height:540px;"/>
-        <a href="{{dispimage.RecordName}}" target="_blank">Shop Now</a>
-        </ngx-item>
-  
-   
-    <button NgxCarouselPrev class='leftRs'>&lt;</button>
-    <button NgxCarouselNext class='rightRs'>&gt;</button>
-</ngx-carousel>
+                <div align="center" class="form-section2" id="form-section2">
+                        <div class="container_13">
+                           
+                        <ngx-carousel
+                            [inputs]="carouselOne"
+                            (carouselLoad)="myfunc($event)">
+                          <!--
+                              <div  *ngFor="let dispimage of pinterestImages ">
+                              -->
+                                  <ngx-tile NgxCarouselItem *ngFor="let dispimage of pillowImageList;let i=index ">
+                                
+                                  <!--
+                                    alt="Responsive image"
+                                  <ngx-item *ngFor= "let dispimage of pinterestImages ">
+                                  -->
+                                  <img src="{{dispimage.Destination}}" style="width:475px;height:300px;"/>
+                                  <a href="{{dispimage.RecordName}}" target="_blank">Shop Now</a>
+                                  </ngx-tile>
+                            
+                             
+                              <button NgxCarouselPrev class='leftRs'>&lt;</button>
+                              <button NgxCarouselNext class='rightRs'>&gt;</button>
+                        </ngx-carousel>
+                      
+                      </div>
+                      </div>
 </div>
 </div>
 
@@ -105,26 +124,32 @@
 <h3>Lamps</h3>
         <div class="subcategories">
 
-  <ngx-carousel
-  [inputs]="carouselOne"
-  (carouselLoad)="myfunc($event)">
-<!--
-    <div  *ngFor="let dispimage of pinterestImages ">
-    -->
-        <ngx-item NgxCarouselItem *ngFor="let dispimage of lampImageList;let i=index ">
-      
-        <!--
-          alt="Responsive image"
-        <ngx-item *ngFor= "let dispimage of pinterestImages ">
-        -->
-        <img src="{{dispimage.Destination}}" style="width:540px;height:540px;"/>
-        <a href="{{dispimage.RecordName}}" target="_blank">Shop Now</a>
-        </ngx-item>
-  
-   
-    <button NgxCarouselPrev class='leftRs'>&lt;</button>
-    <button NgxCarouselNext class='rightRs'>&gt;</button>
-</ngx-carousel>
+                <div align="center" class="form-section2" id="form-section2">
+                        <div class="container_13">
+                           
+                        <ngx-carousel
+                            [inputs]="carouselOne"
+                            (carouselLoad)="myfunc($event)">
+                          <!--
+                              <div  *ngFor="let dispimage of pinterestImages ">
+                              -->
+                                  <ngx-tile NgxCarouselItem *ngFor="let dispimage of lampImageList;let i=index ">
+                                
+                                  <!--
+                                    alt="Responsive image"
+                                  <ngx-item *ngFor= "let dispimage of pinterestImages ">
+                                  -->
+                                  <img src="{{dispimage.Destination}}" style="width:475px;height:300px;"/>
+                                  <a href="{{dispimage.RecordName}}" target="_blank">Shop Now</a>
+                                  </ngx-tile>
+                            
+                             
+                              <button NgxCarouselPrev class='leftRs'>&lt;</button>
+                              <button NgxCarouselNext class='rightRs'>&gt;</button>
+                        </ngx-carousel>
+                      
+                      </div>
+                      </div>
 </div>
 </div>
 
@@ -133,26 +158,32 @@
 <h3>Rugs</h3>
         <div class="subcategories">
 
-  <ngx-carousel
-  [inputs]="carouselOne"
-  (carouselLoad)="myfunc($event)">
-<!--
-    <div  *ngFor="let dispimage of pinterestImages ">
-    -->
-        <ngx-item NgxCarouselItem *ngFor="let dispimage of rugImageList;let i=index ">
-      
-        <!--
-          alt="Responsive image"
-        <ngx-item *ngFor= "let dispimage of pinterestImages ">
-        -->
-        <img src="{{dispimage.Destination}}" style="width:540px;height:540px;"/>
-        <a href="{{dispimage.RecordName}}" target="_blank">Shop Now</a>
-        </ngx-item>
-  
-   
-    <button NgxCarouselPrev class='leftRs'>&lt;</button>
-    <button NgxCarouselNext class='rightRs'>&gt;</button>
-</ngx-carousel>
+                <div align="center" class="form-section2" id="form-section2">
+                        <div class="container_13">
+                           
+                        <ngx-carousel
+                            [inputs]="carouselOne"
+                            (carouselLoad)="myfunc($event)">
+                          <!--
+                              <div  *ngFor="let dispimage of pinterestImages ">
+                              -->
+                                  <ngx-tile NgxCarouselItem *ngFor="let dispimage of rugImageList;let i=index ">
+                                
+                                  <!--
+                                    alt="Responsive image"
+                                  <ngx-item *ngFor= "let dispimage of pinterestImages ">
+                                  -->
+                                  <img src="{{dispimage.Destination}}" style="width:475px;height:300px;"/>
+                                  <a href="{{dispimage.RecordName}}" target="_blank">Shop Now</a>
+                                  </ngx-tile>
+                            
+                             
+                              <button NgxCarouselPrev class='leftRs'>&lt;</button>
+                              <button NgxCarouselNext class='rightRs'>&gt;</button>
+                        </ngx-carousel>
+                      
+                      </div>
+                      </div>
 </div>
 </div>
     </div>
